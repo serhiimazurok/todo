@@ -8,11 +8,6 @@ const app = new Koa();
 
 app.use(bodyParser());
 
-app.use(async (ctx, next) => {
-  ctx.userId = 'b546f022-bf06-426e-9e13-1882dcb761b7';
-  await next();
-});
-
 app.use(router.routes())
 
 app.listen(config.PORT, () => {

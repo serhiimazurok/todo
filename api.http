@@ -1,5 +1,15 @@
+POST http://127.0.0.1:3000/signIn
+Content-Type: application/json
+
+{
+  "id": "b546f022-bf06-426e-9e13-1882dcb761b7"
+}
+
+###
+
 POST http://127.0.0.1:3000/task
 Content-Type: application/json
+Authorization: Bearer {{ jwtToken }}
 
 {
   "title": "Task 4",
@@ -9,19 +19,23 @@ Content-Type: application/json
 ###
 
 GET http://127.0.0.1:3000/tasks
+Authorization: Bearer {{ jwtToken }}
 
 ###
 
 GET http://127.0.0.1:3000/task/7dcc2d15-d7a7-4d75-b18b-393ccc8cca91
+Authorization: Bearer {{ jwtToken }}
 
 ###
 
 DELETE http://127.0.0.1:3000/task/67dd7bc5-9770-49f7-9b83-48883b40c107
+Authorization: Bearer {{ jwtToken }}
 
 ###
 
 PUT http://127.0.0.1:3000/task/7dcc2d15-d7a7-4d75-b18b-393ccc8cca91/status
 Content-Type: application/json
+Authorization: Bearer {{ jwtToken }}
 
 {
   "status": "IN_PROGRESS"

@@ -11,7 +11,7 @@ exports.up = function(knex) {
         .primary()
         .defaultTo(knex.raw("(uuid_generate_v4())"));
 
-      table.string('full_name', 255).notNullable();
+      table.string('fullName', 255).notNullable();
     })
     .createTable('todos', function (table) {
       table
@@ -23,7 +23,7 @@ exports.up = function(knex) {
       table.text('description').notNullable();
       table.enum('status', ['OPEN', 'IN_PROGRESS', 'DONE', 'SKIPPED'])
 
-      table.uuid('user_id')
+      table.uuid('userId')
         .index()
         .references('id')
         .inTable('users');

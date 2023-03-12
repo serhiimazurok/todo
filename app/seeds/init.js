@@ -10,8 +10,8 @@ exports.seed = async function(knex) {
   ]);
 
   // @todo deletes all existing entries
-  await knex('todos').del()
-  await knex('todos').insert([
+  await knex('tasks').del()
+  await knex('tasks').insert([
     {
       id: '7dcc2d15-d7a7-4d75-b18b-393ccc8cca91',
       title: 'Task 1',
@@ -31,13 +31,6 @@ exports.seed = async function(knex) {
       title: 'Task 3',
       description: 'Task description 3',
       status: 'DONE',
-      userId: 'b546f022-bf06-426e-9e13-1882dcb761b7',
-    },
-    {
-      id: 'cc14c567-e3da-4995-bfba-7fbedf5a54f2',
-      title: 'Task 4',
-      description: 'Task description 4',
-      status: 'SKIPPED',
       userId: 'b546f022-bf06-426e-9e13-1882dcb761b7',
     },
   ]);

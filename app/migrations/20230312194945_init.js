@@ -13,7 +13,7 @@ exports.up = function(knex) {
 
       table.string('fullName', 255).notNullable();
     })
-    .createTable('todos', function (table) {
+    .createTable('tasks', function (table) {
       table
         .uuid('id')
         .primary()
@@ -21,7 +21,7 @@ exports.up = function(knex) {
 
       table.string('title', 1000).notNullable();
       table.text('description').notNullable();
-      table.enum('status', ['OPEN', 'IN_PROGRESS', 'DONE', 'SKIPPED'])
+      table.enum('status', ['OPEN', 'IN_PROGRESS', 'DONE'])
 
       table.uuid('userId')
         .index()
@@ -36,6 +36,6 @@ exports.up = function(knex) {
  */
 exports.down = function(knex) {
   return knex.schema
-    .dropTable("todos")
+    .dropTable("tasks")
     .dropTable("users");
 };

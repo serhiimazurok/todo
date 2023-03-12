@@ -39,9 +39,21 @@ const deleteTaskById = async({ userId, id }) => {
     .del();
 }
 
+const updateTaskStatus = async({ userId, id, status }) => {
+  await getTaskById({ userId, id })
+
+  const [ task ] = await knex('tasks')
+    .where({ userId, id })
+    .update({ status })
+    .returning(['id', 'title', 'description', 'status']);
+
+  return task;
+}
+
 module.exports = {
   createTask,
   getAllTasks,
   getTaskById,
   deleteTaskById,
+  updateTaskStatus,
 }

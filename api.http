@@ -12,8 +12,17 @@ GET http://127.0.0.1:3000/tasks
 
 ###
 
-GET http://127.0.0.1:3000/task/67dd7bc5-9770-49f7-9b83-48883b40c107
+GET http://127.0.0.1:3000/task/7dcc2d15-d7a7-4d75-b18b-393ccc8cca91
 
 ###
 
 DELETE http://127.0.0.1:3000/task/67dd7bc5-9770-49f7-9b83-48883b40c107
+
+###
+
+PUT http://127.0.0.1:3000/task/7dcc2d15-d7a7-4d75-b18b-393ccc8cca91/status
+Content-Type: application/json
+
+{
+  "status": "IN_PROGRESS"
+}

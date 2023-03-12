@@ -33,6 +33,12 @@ module.exports = {
     await next();
   },
   updateTaskStatus: async(ctx, next) => {
+    const { userId } = ctx;
+    const { id } = ctx.params;
+    const { status } = ctx.request.body;
+
+    ctx.body = await taskService.updateTaskStatus({ userId, id, status });
+
     await next();
   }
 }

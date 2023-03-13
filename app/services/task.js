@@ -2,7 +2,7 @@ const knex = require('../utils/knex');
 const { TODO_STATUS } = require('../constants');
 
 const createTask = async ({ userId, task }) => {
-  const [ newTask ] = await knex('tasks')
+  const [newTask] = await knex('tasks')
     .insert({
       ...task,
       status: TODO_STATUS.OPEN,
@@ -11,15 +11,13 @@ const createTask = async ({ userId, task }) => {
     .returning(['id', 'title', 'description', 'status']);
 
   return newTask;
-}
+};
 
-const getAllTasks = async({ userId }) => {
-  return knex('tasks')
-    .select('id', 'title', 'description', 'status')
-    .where({ userId });
-}
+const getAllTasks = async ({ userId }) => knex('tasks')
+  .select('id', 'title', 'description', 'status')
+  .where({ userId });
 
-const getTaskById = async({ userId, id }) => {
+const getTaskById = async ({ userId, id }) => {
   const task = await knex('tasks')
     .select('id', 'title', 'description', 'status')
     .where({ userId, id })
@@ -30,25 +28,25 @@ const getTaskById = async({ userId, id }) => {
   }
 
   return task;
-}
+};
 
-const deleteTaskById = async({ userId, id }) => {
-  await getTaskById({ userId, id })
+const deleteTaskById = async ({ userId, id }) => {
+  await getTaskById({ userId, id });
   await knex('tasks')
     .where({ userId, id })
     .del();
-}
+};
 
-const updateTaskStatus = async({ userId, id, status }) => {
-  await getTaskById({ userId, id })
+const updateTaskStatus = async ({ userId, id, status }) => {
+  await getTaskById({ userId, id });
 
-  const [ task ] = await knex('tasks')
+  const [task] = await knex('tasks')
     .where({ userId, id })
     .update({ status })
     .returning(['id', 'title', 'description', 'status']);
 
   return task;
-}
+};
 
 module.exports = {
   createTask,
@@ -56,4 +54,4 @@ module.exports = {
   getTaskById,
   deleteTaskById,
   updateTaskStatus,
-}
+};

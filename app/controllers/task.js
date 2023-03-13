@@ -1,7 +1,7 @@
 const taskService = require('../services/task');
 
 module.exports = {
-  createTask: async(ctx, next) => {
+  createTask: async (ctx, next) => {
     const { user } = ctx;
     const task = ctx.request.body;
 
@@ -9,14 +9,14 @@ module.exports = {
 
     await next();
   },
-  getAllTasks: async(ctx, next) => {
+  getAllTasks: async (ctx, next) => {
     const { user } = ctx;
 
     ctx.body = await taskService.getAllTasks({ userId: user.id });
 
     await next();
   },
-  getTaskById: async(ctx, next) => {
+  getTaskById: async (ctx, next) => {
     const { user } = ctx;
     const { id } = ctx.params;
 
@@ -24,7 +24,7 @@ module.exports = {
 
     await next();
   },
-  deleteTaskById: async(ctx, next) => {
+  deleteTaskById: async (ctx, next) => {
     const { user } = ctx;
     const { id } = ctx.params;
 
@@ -32,7 +32,7 @@ module.exports = {
 
     await next();
   },
-  updateTaskStatus: async(ctx, next) => {
+  updateTaskStatus: async (ctx, next) => {
     const { user } = ctx;
     const { id } = ctx.params;
     const { status } = ctx.request.body;
@@ -40,5 +40,5 @@ module.exports = {
     ctx.body = await taskService.updateTaskStatus({ userId: user.id, id, status });
 
     await next();
-  }
-}
+  },
+};

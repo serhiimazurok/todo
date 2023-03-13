@@ -1,16 +1,16 @@
 /**
  * @param { import("knex").Knex } knex
- * @returns { Promise<void> } 
+ * @returns { Promise<void> }
  */
-exports.seed = async function(knex) {
+exports.seed = async function seed(knex) {
   // @todo deletes all existing entries
-  await knex('users').del()
+  await knex('users').del();
   await knex('users').insert([
     { id: 'b546f022-bf06-426e-9e13-1882dcb761b7', fullName: 'John Smith' },
   ]);
 
   // @todo deletes all existing entries
-  await knex('tasks').del()
+  await knex('tasks').del();
   await knex('tasks').insert([
     {
       id: '7dcc2d15-d7a7-4d75-b18b-393ccc8cca91',

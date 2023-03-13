@@ -1,5 +1,6 @@
-const knex = require("../utils/knex");
-const getUserById = async({ id }) => {
+const knex = require('../utils/knex');
+
+const getUserById = async ({ id }) => {
   const user = await knex('users')
     .select('id', 'fullName')
     .where({ id })
@@ -10,7 +11,7 @@ const getUserById = async({ id }) => {
   }
 
   return user;
-}
+};
 
 module.exports = {
   getUserById,
